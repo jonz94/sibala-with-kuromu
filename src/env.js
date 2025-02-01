@@ -12,6 +12,7 @@ export const env = createEnv({
     AUTH_DISCORD_SECRET: z.string(),
     DATABASE_URL: z.string().url(),
     DATABASE_AUTH_TOKEN: z.string(),
+    BASE_URL: z.string().url(),
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   },
 
@@ -34,6 +35,7 @@ export const env = createEnv({
     AUTH_DISCORD_SECRET: process.env.AUTH_DISCORD_SECRET,
     DATABASE_URL: process.env.DATABASE_URL,
     DATABASE_AUTH_TOKEN: process.env.DATABASE_AUTH_TOKEN,
+    BASE_URL: process.env.BASE_URL,
     NODE_ENV: process.env.NODE_ENV,
   },
   /**

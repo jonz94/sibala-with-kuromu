@@ -4,14 +4,12 @@ import { Preview } from '~/app/preview'
 import { Unlock } from '~/app/unlock'
 import { ModeToggle } from '~/components/mode-toggle'
 import { Button } from '~/components/ui/button'
+import { env } from '~/env'
 import { auth, signIn, signOut } from '~/server/auth'
 import { HydrateClient } from '~/trpc/server'
 
 export default async function Home() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-  const baseUrl = ((process.env as any)?.VERCEL_URL ?? 'http://localhost:3000') as string
-
-  console.log({ baseUrl })
+  const baseUrl = env.BASE_URL
 
   const session = await auth()
 
