@@ -12,8 +12,8 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center">
-        <div className="container flex flex-col items-center justify-center gap-6 px-4 py-12">
+      <main className="flex min-h-screen flex-col items-center">
+        <div className="container flex flex-col items-center gap-6 px-4 py-12">
           <h1 className="flex items-center gap-1 text-xl font-semibold">
             <span>貓草窩大賭場</span>
             <span>
