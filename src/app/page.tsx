@@ -8,6 +8,11 @@ import { auth, signIn, signOut } from '~/server/auth'
 import { HydrateClient } from '~/trpc/server'
 
 export default async function Home() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+  const baseUrl = ((process.env as any)?.VERCEL_URL ?? 'http://localhost:3000') as string
+
+  console.log({ baseUrl })
+
   const session = await auth()
 
   return (
@@ -34,7 +39,7 @@ export default async function Home() {
 
           <div className="flex flex-col items-center gap-2">
             <div className="flex flex-col items-center justify-center gap-4">
-              {session && <Create />}
+              {session && <Create baseUrl={baseUrl} />}
 
               {session && (
                 <div className="flex flex-col gap-y-4">

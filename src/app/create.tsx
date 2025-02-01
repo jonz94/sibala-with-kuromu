@@ -5,7 +5,7 @@ import { Button } from '~/components/ui/button'
 import { currentGameAtom } from '~/lib/store'
 import { api } from '~/trpc/react'
 
-export function Create() {
+export function Create({ baseUrl }: { baseUrl: string }) {
   const [currentGame, setCurrentGame] = useAtom(currentGameAtom)
 
   const { mutate } = api.game.createGame.useMutation({
@@ -33,9 +33,6 @@ export function Create() {
         <>
           <Button
             onClick={() => {
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-              const baseUrl = ((process.env as any)?.VERCEL_URL ?? 'http://localhost:3000') as string
-
               console.log({ baseUrl })
 
               const url = `${baseUrl}/?id=${currentGame.id}&code=${currentGame.code}`
