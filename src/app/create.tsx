@@ -33,7 +33,12 @@ export function Create() {
         <>
           <Button
             onClick={() => {
-              const url = `http://localhost:3000/?id=${currentGame.id}&code=${currentGame.code}`
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+              const baseUrl = ((process.env as any)?.VERCEL_URL ?? 'http://localhost:3000') as string
+
+              console.log({ baseUrl })
+
+              const url = `${baseUrl}/?id=${currentGame.id}&code=${currentGame.code}`
               void handleCopy(url)
             }}
           >
