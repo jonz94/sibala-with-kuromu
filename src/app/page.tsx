@@ -5,7 +5,7 @@ import { Unlock } from '~/app/unlock'
 import { ModeToggle } from '~/components/mode-toggle'
 import { Button } from '~/components/ui/button'
 import { env } from '~/env'
-import { auth, signIn, signOut } from '~/server/auth'
+import { auth, signOut } from '~/server/auth'
 import { HydrateClient } from '~/trpc/server'
 
 export default async function Home() {
@@ -15,8 +15,8 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center">
-        <div className="container flex flex-col items-center gap-6 px-4 pt-16">
+      <main className="flex min-h-dvh flex-col items-center">
+        <div className="container flex flex-1 flex-col items-center gap-6 px-4 pb-4 pt-16">
           <h1 className="flex items-center gap-1 text-xl font-semibold">
             <span>
               <picture>
@@ -35,12 +35,12 @@ export default async function Home() {
             <Play />
           )}
 
-          <div className="flex flex-col items-center gap-2">
-            <div className="flex flex-col items-center justify-center gap-4">
+          <div className="flex flex-1 flex-col items-center gap-2">
+            <div className="flex flex-1 flex-col items-center justify-center gap-4">
               {session && <Create baseUrl={baseUrl} />}
 
               {session && (
-                <div className="flex flex-col gap-y-4">
+                <div className="mt-auto flex flex-col gap-y-4">
                   <p>成功以管理員身份登入</p>
                   <p className="flex gap-x-2 text-center text-2xl">
                     <picture className="size-8">
@@ -51,7 +51,7 @@ export default async function Home() {
                 </div>
               )}
 
-              {session ? <SignOut /> : <SignIn />}
+              {session ? <SignOut /> : null}
             </div>
           </div>
         </div>
@@ -61,21 +61,6 @@ export default async function Home() {
         <ModeToggle />
       </div>
     </HydrateClient>
-  )
-}
-
-function SignIn() {
-  return (
-    <form
-      action={async () => {
-        'use server'
-        await signIn('discord')
-      }}
-    >
-      <Button variant="secondary" type="submit">
-        管理員登入 (透過 DC 驗證身份)
-      </Button>
-    </form>
   )
 }
 

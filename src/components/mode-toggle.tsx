@@ -19,9 +19,9 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>System</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('light')}>淺色主題</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('dark')}>深色主題</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme('system')}>系統預設</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
