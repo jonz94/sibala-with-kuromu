@@ -1,6 +1,7 @@
 'use client'
 
 import { useAtom } from 'jotai'
+import { toast } from 'sonner'
 import { Button } from '~/components/ui/button'
 import { currentGameAtom } from '~/lib/store'
 import { api } from '~/trpc/react'
@@ -19,7 +20,7 @@ export function Create({ baseUrl }: { baseUrl: string }) {
   const handleCopy = async (url: string) => {
     try {
       await navigator.clipboard.writeText(url)
-      alert('複製成功')
+      toast.success('成功複製網址')
     } catch (err) {
       console.error('Failed to copy: ', err)
     }

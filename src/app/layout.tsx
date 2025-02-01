@@ -1,7 +1,7 @@
 import '~/styles/globals.css'
 
 import { type Metadata } from 'next'
-
+import { Toaster } from 'sonner'
 import { ThemeProvider } from '~/components/theme-provider'
 import { TRPCReactProvider } from '~/trpc/react'
 
@@ -18,6 +18,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <TRPCReactProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             {children}
+
+            <Toaster richColors expand closeButton />
           </ThemeProvider>
         </TRPCReactProvider>
       </body>

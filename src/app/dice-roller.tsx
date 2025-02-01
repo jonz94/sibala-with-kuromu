@@ -26,10 +26,12 @@ let previousAttempt = defaultStore.get(latestAttemptAtom)
 export function DiceRoller({ id, code }: { id: number; code: string }) {
   const [dice, setDice] = useState([0, 0, 0, 0])
   const [isRolling, setIsRolling] = useState(false)
+  const [showResult, setShowResult] = useState(false)
   const setLatestAttempt = useSetAtom(latestAttemptAtom)
 
   const rollDice = useCallback(
     (finalResults: number[]) => {
+      setShowResult(false)
       setIsRolling(true)
 
       const rolls = 15
@@ -41,6 +43,7 @@ export function DiceRoller({ id, code }: { id: number; code: string }) {
           setDice(dice.map(() => Math.floor(Math.random() * 6) + 1))
         } else {
           setDice(finalResults)
+          setShowResult(true)
         }
 
         count++
@@ -93,6 +96,12 @@ export function DiceRoller({ id, code }: { id: number; code: string }) {
         <Button onClick={() => play.mutate({ id, code })} disabled={isRolling} className="px-8 py-2 text-lg">
           十八啦！
         </Button>
+
+        {showResult ? (
+          <p>本次骰出 {dice.join('、')}</p>
+        ) : (
+          <p className={(dice.at(0) ?? 0) === 0 ? 'invisible' : ''}>擲骰中...</p>
+        )}
       </div>
     </div>
   )
