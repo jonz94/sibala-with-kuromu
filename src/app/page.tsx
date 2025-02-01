@@ -18,12 +18,12 @@ export default async function Home() {
       <main className="flex min-h-screen flex-col items-center">
         <div className="container flex flex-col items-center gap-6 px-4 py-12">
           <h1 className="flex items-center gap-1 text-xl font-semibold">
-            <span>貓草窩大賭場</span>
             <span>
               <picture>
                 <img src="https://cdn.discordapp.com/emojis/1069542717253758987.png" alt="cathehe" className="size-7" />
               </picture>
             </span>
+            <span>貓草窩大賭場</span>
           </h1>
 
           {session ? (
