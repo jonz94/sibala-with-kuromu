@@ -2,6 +2,11 @@
   "name": "sibala-with-kuromu",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "jonz94",
+    "email": "jody16888@gmail.com"
+  },
   "type": "module",
   "scripts": {
     "build": "next build",
